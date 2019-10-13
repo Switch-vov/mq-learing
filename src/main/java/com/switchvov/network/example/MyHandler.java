@@ -1,4 +1,4 @@
-package com.switchvov.network.transfer.example;
+package com.switchvov.network.example;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
