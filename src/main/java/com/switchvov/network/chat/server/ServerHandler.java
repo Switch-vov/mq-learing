@@ -78,6 +78,6 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     }
 
     private void printMsg(MsgPacket packet) {
-        System.out.println("李大爷说：【" + packet.getSession() + ":" + packet.getContent() + "】");
+//        System.out.println("李大爷说：【" + packet.getSession() + ":" + packet.getContent() + "】");
     }
 }
