@@ -1,9 +1,6 @@
 package com.switchvov.network.chat.client;
 
-import com.switchvov.network.chat.protocal.codec.PacketCodeC;
-import com.switchvov.network.chat.protocal.packet.MsgPacket;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -15,30 +12,22 @@ import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import static com.switchvov.network.chat.common.MsgConstant.*;
-
 /**
  * @author switch
  * @since 2019/10/12
  */
 public class LiClient {
-    private static final int MAX_RETRY = 5;
-    private static final String HOST = "127.0.0.1";
-    private static final int PORT = 18000;
+    public static final int MAX_RETRY = 5;
+    public static final String HOST = "127.0.0.1";
+    public static final int PORT = 18000;
 
 
     public static void main(String[] args) {
         Bootstrap bootstrap = LiClient.bootstrap();
-        ChannelFuture channelFuture = connect(bootstrap, HOST, PORT, MAX_RETRY);
-        for (int i = 0; i < COUNT_LEVEL_3; i++) {
-            MsgPacket msgPacket = new MsgPacket();
-            msgPacket.setSession(MSG_SESSION_NULL);
-            ByteBuf byteBuf = PacketCodeC.INSTANCE.encode(msgPacket);
-            channelFuture.channel().writeAndFlush(byteBuf);
-        }
+        connect(bootstrap, HOST, PORT, MAX_RETRY);
     }
 
-    private static Bootstrap bootstrap() {
+    public static Bootstrap bootstrap() {
         NioEventLoopGroup workerGroup = new NioEventLoopGroup();
 
         Bootstrap bootstrap = new Bootstrap();
@@ -58,7 +47,7 @@ public class LiClient {
         return bootstrap;
     }
 
-    private static ChannelFuture connect(Bootstrap bootstrap, String host, int port, int retry) {
+    public static ChannelFuture connect(Bootstrap bootstrap, String host, int port, int retry) {
         return bootstrap.connect(host, port).addListener(future -> {
             if (future.isSuccess()) {
                 System.out.println(new Date() + ": 连接成功！");

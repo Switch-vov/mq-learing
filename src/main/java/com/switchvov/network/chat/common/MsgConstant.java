@@ -5,7 +5,6 @@ package com.switchvov.network.chat.common;
  * @since 2019/10/12
  */
 public interface MsgConstant {
-    int MSG_SESSION_NULL = 0;
     int MSG_SESSION_ONE = 1;
     int MSG_SESSION_TWO = 2;
     int MSG_SESSION_THREE = 3;
