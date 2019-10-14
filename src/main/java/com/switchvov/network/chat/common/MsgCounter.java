@@ -28,12 +28,13 @@ public class MsgCounter {
 
     public static void count() {
         start();
-        int count = counter.incrementAndGet() / 6;
-        if (count == COUNT_LEVEL_1 || count == COUNT_LEVEL_2 || count == COUNT_LEVEL_3) {
+        int count = counter.incrementAndGet();
+        int finishCount = count / 6;
+        if ((finishCount == COUNT_LEVEL_1 || finishCount == COUNT_LEVEL_2 || finishCount == COUNT_LEVEL_3) && count % 6 == 0) {
             long endTime = System.currentTimeMillis();
             long time = endTime - startTime;
-            System.out.println("遍历" + count + "次，花费:" + time + "ms");
-            countTimeMapping.put(count, time);
+            System.out.println("遍历" + finishCount + "次，花费:" + time + "ms");
+            countTimeMapping.put(finishCount, time);
             System.out.println(countTimeMapping);
         }
     }
