@@ -78,7 +78,7 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
     }
 
     private void printMsg(MsgPacket packet) {
-        System.out.println("张大爷说：【" + packet.getSession() + ":" + packet.getContent() + "】");
+//        System.out.println("张大爷说：【" + packet.getSession() + ":" + packet.getContent() + "】");
     }
 
     public Map<Integer, Long> getCountTimeMapping() {
